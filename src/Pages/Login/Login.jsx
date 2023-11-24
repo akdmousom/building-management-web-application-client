@@ -1,11 +1,26 @@
+import { useContext } from 'react';
 import {useForm} from 'react-hook-form'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 const Login = () => {
 
-    const {register, handleSubmit, watch, formState: {errors},} = useForm()
+    const {register, handleSubmit} = useForm()
+    const {signIn} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const onSubmit = (data) => {
         console.log(data);
+        signIn(data.email, data.password)
+        .then((userCredential)=>{
+           const user = userCredential.user;
+
+           if (user) {
+
+           toast.success('Login Successfull')
+           navigate('/')
+           }
+        })
     }
 
 
@@ -23,14 +38,14 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" defaultValue='test' { ...register('email')} placeholder="email" className="input input-bordered" required />
+                            <input type="email" name='email'{ ...register('email')} placeholder="email" className="input input-bordered" required />
                             
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" {...register('password')} placeholder="password" className="input input-bordered" required />
+                            <input type="password" name='password' {...register('password')} placeholder="password" className="input input-bordered" required />
                             <label className="label">
                                <Link to={'/register'}><p href="#" className="label-text-alt link link-hover">I don&apos;t have an account register</p></Link> 
                             </label>

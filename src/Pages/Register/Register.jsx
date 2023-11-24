@@ -1,11 +1,43 @@
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 const Register = () => {
 
-    const { register, handleSubmit, watch, formState: { errors }, } = useForm()
+    const { createUser, updateUserInfo } = useContext(AuthContext)
+
+    const { register, handleSubmit, formState: { errors }, } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
+        const name = data?.name;
+        const img = data?.avatar;
+
+        createUser(data.email, data.password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+
+                if (user) {
+                    updateUserInfo(name, img)
+                        .then(() => {
+
+                            if (user) {
+                                toast.success('Regiter successful')
+                                navigate('/')
+                            }
+                        })
+                        .catch(error => {
+                            toast.error(error.message)
+                        })
+                }
+
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            })
+
     }
 
 
@@ -29,7 +61,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Avater URL</span>
                             </label>
-                            <input type="text" name='avater' {...register('avatar')} placeholder="Avater URL" className="input input-bordered" required />
+                            <input type="url" name='avater' {...register('avatar')} placeholder="Avater URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -50,7 +82,7 @@ const Register = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button type='submit' className="btn btn-primary">Login</button>
+                            <button type='submit' className="btn btn-primary">Register</button>
                         </div>
                     </form>
                 </div>
