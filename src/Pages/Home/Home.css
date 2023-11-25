@@ -2,6 +2,8 @@
     position: relative;
     font-size: 3em;
     font-weight: 800;
+    text-align: center;
+    
 }
 
 .building::before{
@@ -23,6 +25,90 @@
     }
 
     70%,90%{
-        width: 38.6%;
+        width: 38.5%;
     }
 }
+@media  screen and (max-width: 1024px) {
+
+    @keyframes animate {
+        0%,10%,100%
+        {
+            width: 0;
+        }
+    
+        70%,90%{
+            width: 38.5%;
+        }
+    }
+    
+}
+
+@media screen and (max-width:768px){
+
+ 
+    @keyframes animate {
+        0%,10%,100%
+        {
+            width: 0;
+        }
+    
+        70%,90%{
+            width: 60%;
+        }
+    }
+    
+}
+
+@media screen and (max-width:425px){
+
+    .building{
+       
+        font-size: 2em;
+
+
+        
+    }
+
+
+
+    @keyframes animate {
+        0%,10%,100%
+        {
+            width: 0;
+        }
+    
+        70%,90%{
+            width: 73%;
+        }
+    }
+    
+}
+
+@media screen and (max-width:375px){
+
+    .building{
+       
+        font-size: 2em;
+
+
+        
+    }
+
+
+
+    @keyframes animate {
+        0%,10%,100%
+        {
+            width: 0;
+        }
+    
+        70%,90%{
+            width: 83%;
+        }
+    }
+    
+}
+
+
+
+

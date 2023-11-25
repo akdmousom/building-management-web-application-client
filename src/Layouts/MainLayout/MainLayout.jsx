@@ -6,6 +6,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FcHome } from "react-icons/fc";
 import Container from "../../Components/Container/Container";
 import toast from "react-hot-toast";
+import Footer from "../../Components/Footer/Footer";
 
 const MainLayout = ({ children }) => {
     const { user, loading, logOut } = useContext(AuthContext)
@@ -85,6 +86,8 @@ const MainLayout = ({ children }) => {
                     </ul>
                 </div>
             </div>
+
+            <Footer/>
 
         </>
     );
