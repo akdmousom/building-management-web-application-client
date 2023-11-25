@@ -1,0 +1,28 @@
+.building{
+    position: relative;
+    font-size: 3em;
+    font-weight: 800;
+}
+
+.building::before{
+    content: attr(data-text);
+    position: absolute;
+    color: #333c4d;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid #333c4d;
+
+    animation: animate infinite 8s linear;
+}
+
+@keyframes animate {
+    0%,10%,100%
+    {
+        width: 0;
+    }
+
+    70%,90%{
+        width: 38.6%;
+    }
+}
