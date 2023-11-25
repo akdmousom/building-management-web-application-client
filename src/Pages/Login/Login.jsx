@@ -11,7 +11,6 @@ const Login = () => {
     const navigate = useNavigate()
 
     const onSubmit = (data) => {
-        console.log(data);
         signIn(data.email, data.password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -21,6 +20,10 @@ const Login = () => {
                     toast.success('Login Successfull')
                     navigate('/')
                 }
+            })
+            .catch((error)=>{
+                const errorMessage = error.message;
+                toast.error(errorMessage)
             })
     }
 
