@@ -4,8 +4,12 @@ import ApartmentCard from "../../Components/ApartmentCard/ApartmentCard";
 import Container from "../../Components/Container/Container";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/Axios/useAxios";
+import { useState } from "react";
 
 const Apartment = () => {
+
+    const [page, setPage] = useState(1);
+    const limit = 6;
 
     const Axios = useAxios();
 
@@ -15,7 +19,6 @@ const Apartment = () => {
         // return res
 
         const res = await Axios('/apartments')
-        console.log(res);
         return res
 
         
@@ -35,13 +38,15 @@ const Apartment = () => {
             </Helmet>
 
             <Container>
+                {isLoading ? <div className="flex min-h-screen items-center mx-auto justify-center"><span className="loading loading-spinner loading-lg"></span></div>  :
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10 px-4">
 
-                    { isLoading ? 'loading' :
+                    { 
                         data?.data?.map((data, idx) => <ApartmentCard data={data} key={idx} />)
                     }
 
                 </div>
+                }
             </Container>
         </div>
     );
