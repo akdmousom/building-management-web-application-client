@@ -1,30 +1,48 @@
+
 import { Helmet } from "react-helmet-async";
+import ApartmentCard from "../../Components/ApartmentCard/ApartmentCard";
+import Container from "../../Components/Container/Container";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../Hooks/Axios/useAxios";
 
 const Apartment = () => {
+
+    const Axios = useAxios();
+
+    const getApartmets = async () =>{
+        // const res =await Axios.get('/apartments')
+        // console.log(res);
+        // return res
+
+        const res = await Axios('/apartments')
+        console.log(res);
+        return res
+
+        
+    }
+
+    const { data, isLoading } = useQuery({
+        queryKey: ['apartments'],
+        queryFn: getApartmets
+    })
+   
+
+
     return (
         <div className=" min-h-screen">
             <Helmet>
                 <title>DAS Mansion | Apartments </title>
             </Helmet>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3">
+            <Container>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10 px-4">
 
-                <div className="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">
-                            Shoes!
-                            <div className="badge badge-secondary">NEW</div>
-                        </h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="card-actions justify-end">
-                            <div className="badge badge-outline">Fashion</div>
-                            <div className="badge badge-outline">Products</div>
-                        </div>
-                    </div>
+                    { isLoading ? 'loading' :
+                        data?.data?.map((data, idx) => <ApartmentCard data={data} key={idx} />)
+                    }
+
                 </div>
-
-            </div>
+            </Container>
         </div>
     );
 };
