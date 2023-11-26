@@ -1,0 +1,93 @@
+[
+    {
+      "image": "https://example.com/apartment1.jpg",
+      "floorNo": 1,
+      "blockName": "A",
+      "apartmentNo": "101",
+      "rent": 1200
+    },
+    {
+      "image": "https://example.com/apartment2.jpg",
+      "floorNo": 2,
+      "blockName": "B",
+      "apartmentNo": "204",
+      "rent": 1500
+    },
+    {
+      "image": "https://example.com/apartment3.jpg",
+      "floorNo": 3,
+      "blockName": "C",
+      "apartmentNo": "301",
+      "rent": 1800
+    },
+    {
+      "image": "https://example.com/apartment4.jpg",
+      "floorNo": 1,
+      "blockName": "A",
+      "apartmentNo": "102",
+      "rent": 1300
+    },
+    {
+      "image": "https://example.com/apartment5.jpg",
+      "floorNo": 2,
+      "blockName": "B",
+      "apartmentNo": "205",
+      "rent": 1600
+    },
+    {
+      "image": "https://example.com/apartment6.jpg",
+      "floorNo": 3,
+      "blockName": "C",
+      "apartmentNo": "302",
+      "rent": 1900
+    },
+    {
+      "image": "https://example.com/apartment7.jpg",
+      "floorNo": 1,
+      "blockName": "A",
+      "apartmentNo": "103",
+      "rent": 1400
+    },
+    {
+      "image": "https://example.com/apartment8.jpg",
+      "floorNo": 2,
+      "blockName": "B",
+      "apartmentNo": "206",
+      "rent": 1700
+    },
+    {
+      "image": "https://example.com/apartment9.jpg",
+      "floorNo": 3,
+      "blockName": "C",
+      "apartmentNo": "303",
+      "rent": 2000
+    },
+    {
+      "image": "https://example.com/apartment10.jpg",
+      "floorNo": 1,
+      "blockName": "A",
+      "apartmentNo": "104",
+      "rent": 1500
+    },
+    {
+      "image": "https://example.com/apartment11.jpg",
+      "floorNo": 2,
+      "blockName": "B",
+      "apartmentNo": "207",
+      "rent": 1800
+    },
+    {
+      "image": "https://example.com/apartment12.jpg",
+      "floorNo": 3,
+      "blockName": "C",
+      "apartmentNo": "304",
+      "rent": 2100
+    },
+    {
+      "image": "https://example.com/apartment13.jpg",
+      "floorNo": 1,
+      "blockName": "A",
+      "apartmentNo": "105",
+      "rent": 1600
+    }
+  ]

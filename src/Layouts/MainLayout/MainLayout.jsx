@@ -77,6 +77,7 @@ const MainLayout = ({ children }) => {
                     
                     {/* Page content here */}
                     {children}
+                    <Footer/>
                 </div>
                 <div className="drawer-side z-10">
                     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -87,7 +88,7 @@ const MainLayout = ({ children }) => {
                 </div>
             </div>
 
-            <Footer/>
+            
 
         </>
     );
