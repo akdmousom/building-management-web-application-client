@@ -1,12 +1,21 @@
-const Pagination = () => {
+const Pagination = ({handleNext,totalPage, handlePrev, setPage, page}) => {
+    
+
     return (
         <div className="join flex justify-center items-center mx-auto my-2">
-            <input className="join-item btn btn-square" type="radio" name="options" aria-label="◄" checked />
-            <input className="join-item btn btn-square" type="radio" name="options" aria-label="1"  />
-            <input className="join-item btn btn-square" type="radio" name="options" aria-label="2" />
-            <input className="join-item btn btn-square" type="radio" name="options" aria-label="3" />
-            <input className="join-item btn btn-square" type="radio" name="options" aria-label="4" />
-            <input className="join-item btn btn-square" type="radio" name="options" aria-label="►" />
+            <input onClick={()=>handlePrev()} className="join-item btn btn-square" type="radio" name="options" aria-label="◄" />
+           
+            {
+                Array(totalPage).fill(0).map((item, idx)=>{
+                    const pageNumber = idx +1;
+                    return (<button key={idx} onClick={()=> setPage(pageNumber)} className={pageNumber === page ? "join-item btn btn-active" : "join-item btn" }>{pageNumber}</button>)
+                })
+            }
+
+
+            
+            
+            <input onClick={()=>handleNext()} className="join-item btn btn-square" type="radio" name="options" aria-label="►" />
         </div>
     );
 };

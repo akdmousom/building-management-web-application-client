@@ -5,13 +5,32 @@ import Container from "../../Components/Container/Container";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/Axios/useAxios";
 import { useState } from "react";
-import usePagination from "../../Components/Pagination/Pagination";
 import Pagination from "../../Components/Pagination/Pagination";
 
 const Apartment = () => {
 
     const [page, setPage] = useState(1);
     const limit = 6;
+   
+
+    console.log(page);
+
+    const handleNext = () => {
+        if (page >= 1) {
+            const pageNumber = page + 1;
+            setPage(pageNumber)
+
+        }
+    }
+
+    const handlePrev = () => {
+        if (page > 1) {
+
+            const pageNumber = page - 1;
+            setPage(pageNumber)
+            
+        }
+    }
 
 
     const Axios = useAxios();
@@ -21,17 +40,20 @@ const Apartment = () => {
         // console.log(res);
         // return res
 
-        const res = await Axios('/apartments')
+        const res = await Axios(`/apartments?page=${page}&limit=${limit}`)
         return res
 
 
     }
 
     const { data, isLoading } = useQuery({
-        queryKey: ['apartments'],
+        queryKey: ['apartments', page],
         queryFn: getApartmets
     })
+     const total = data?.data?.total
 
+     const totalPage = Math.ceil(total / limit);
+    
 
 
     return (
@@ -46,13 +68,13 @@ const Apartment = () => {
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10 px-4">
 
                             {
-                                data?.data?.map((data, idx) => <ApartmentCard data={data} key={idx} />)
+                                data?.data?.cursor.map((data, idx) => <ApartmentCard data={data} key={idx} />)
                             }
 
 
 
                         </div>
-                        <Pagination/>
+                        <Pagination totalPage={totalPage} page={page} setPage={setPage} handlePrev={handlePrev} handleNext={handleNext} />
                     </>
 
                 }
