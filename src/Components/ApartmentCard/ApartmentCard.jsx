@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const ApartmentCard = ({ data }) => {
+const ApartmentCard = ({ data, handleAgreement }) => {
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure><img className='object-cover h-[300px] w-full' src={data.image} alt="Shoes" /></figure>
@@ -13,7 +13,7 @@ const ApartmentCard = ({ data }) => {
 
                 <p className=' text-xl font-medium '>Floor : {data.floorNo},  Rent: ${data.rent}</p>
 
-                <button className='btn btn-outline btn-primary text-base'>Agreement</button>
+                <button onClick={()=>handleAgreement(data._id)} className='btn btn-outline btn-primary text-base'>Agreement</button>
 
 
             </div>

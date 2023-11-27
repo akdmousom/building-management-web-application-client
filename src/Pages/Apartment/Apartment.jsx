@@ -6,15 +6,36 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../Hooks/Axios/useAxios";
 import { useState } from "react";
 import Pagination from "../../Components/Pagination/Pagination";
+import useSecureAxios from "../../Hooks/Axios/useSecureAxios";
+
 
 const Apartment = () => {
 
     const [page, setPage] = useState(1);
     const limit = 6;
+    const Axios = useAxios();
+    const secureAxios = useSecureAxios()
    
+    const handleAgreement = (id) => {
 
-    console.log(page);
+    //    const res =  secureAxios.post('/agreement', {
+    //         Headers: {
+    //             authorization : `Bearer ${localStorage.getItem('accessToken')}`
+    //         } 
+    //     })
 
+    //     console.log(res);
+
+    const res = secureAxios.post('/agreement',{
+        headers: {
+            authorization : `Bearer ${localStorage.getItem("accessToken")}`
+          }
+    })
+
+        console.log(res);
+
+    }
+    
     const handleNext = () => {
         if (page >= 1) {
             const pageNumber = page + 1;
@@ -33,7 +54,7 @@ const Apartment = () => {
     }
 
 
-    const Axios = useAxios();
+    
 
     const getApartmets = async () => {
         // const res =await Axios.get('/apartments')
@@ -68,7 +89,7 @@ const Apartment = () => {
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10 px-4">
 
                             {
-                                data?.data?.cursor.map((data, idx) => <ApartmentCard data={data} key={idx} />)
+                                data?.data?.cursor.map((data, idx) => <ApartmentCard handleAgreement={handleAgreement} data={data} key={idx} />)
                             }
 
 
