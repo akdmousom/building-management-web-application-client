@@ -7,6 +7,8 @@ import useAxios from "../../Hooks/Axios/useAxios";
 import { useState } from "react";
 import Pagination from "../../Components/Pagination/Pagination";
 import useSecureAxios from "../../Hooks/Axios/useSecureAxios";
+import useAuth from "../../Hooks/UseAuth/UseAuth";
+import toast from "react-hot-toast";
 
 
 const Apartment = () => {
@@ -15,8 +17,9 @@ const Apartment = () => {
     const limit = 6;
     const Axios = useAxios();
     const secureAxios = useSecureAxios()
+    const {user} = useAuth()
    
-    const handleAgreement = (id) => {
+    const handleAgreement = async (selectApartment) => {
 
     //    const res =  secureAxios.post('/agreement', {
     //         Headers: {
@@ -26,13 +29,37 @@ const Apartment = () => {
 
     //     console.log(res);
 
-    const res = secureAxios.post('/agreement',{
+    const {floorNo, blockName, apartmentNo, rent} = selectApartment
+    const {email, displayName} = user;
+
+    const selectedApartment = {
+        floorNo,
+        blockName,
+        apartmentNo,
+        rent,
+        userEmail: email,
+        userName: displayName
+    }
+
+    const res = await secureAxios.post('/agreement',{
         headers: {
             authorization : `Bearer ${localStorage.getItem("accessToken")}`
-          }
+          },
+          data: {
+            apartmentDetails : selectedApartment
+          },
     })
 
-        console.log(res);
+    if (res.status === 200) {
+
+        toast.success('Thanks for this agreement')
+        
+    }else{
+        toast.error('Oh ho something is wrong')
+    }
+    
+
+       
 
     }
     

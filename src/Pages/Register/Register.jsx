@@ -4,9 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
-const Register = () => {
+import useAxios from '../../Hooks/Axios/useAxios';
+const Register =() => {
 
     const { createUser, updateUserInfo } = useContext(AuthContext)
+    const Axios = useAxios()
 
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const navigate = useNavigate();
@@ -19,9 +21,23 @@ const Register = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
 
+                
+
+                
+
                 if (user) {
                     updateUserInfo(name, img)
+                    
                         .then(() => {
+                            const userData = {
+                                userName : user.displayName,
+                                userEmail: user.email
+                            }
+
+                            const res =Axios.post('/register', userData)
+                            console.log(res);
+
+                            
 
                             if (user) {
                                 toast.success('Regiter successful')

@@ -13,7 +13,7 @@ const ApartmentCard = ({ data, handleAgreement }) => {
 
                 <p className=' text-xl font-medium '>Floor : {data.floorNo},  Rent: ${data.rent}</p>
 
-                <button onClick={()=>handleAgreement(data._id)} className='btn btn-outline btn-primary text-base'>Agreement</button>
+                <button onClick={()=>handleAgreement(data)} className='btn btn-outline btn-primary text-base'>Agreement</button>
 
 
             </div>
