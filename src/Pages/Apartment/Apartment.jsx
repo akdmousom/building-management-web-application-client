@@ -88,7 +88,7 @@ const Apartment = () => {
         // console.log(res);
         // return res
 
-        const res = await Axios(`/apartments?page=${page}&limit=${limit}`)
+        const res = await Axios.get(`/apartments?page=${page}&limit=${limit}`)
         return res
 
 

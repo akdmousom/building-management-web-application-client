@@ -10,15 +10,15 @@ const instance = axios.create({
 const useSecureAxios = () => {
   const {logOut} = useAuth();
   const navigate = useNavigate();
-//   instance.interceptors.response.use(function (response) {
-//     return response;
-//   }, function (error) {
+  instance.interceptors.response.use(function (response) {
+    return response;
+  }, function (error) {
 
-//  if (error.response.status === 401 || error.response.status === 403 ) {
-//     logOut()
-//  }
-//     return Promise.reject(error);
-//   });
+ if (error.response.status === 401 || error.response.status === 403 ) {
+    logOut()
+ }
+    return Promise.reject(error);
+  });
 
  // request interceptor to add authorization header for every secure call to teh api
  instance.interceptors.request.use(function (config) {

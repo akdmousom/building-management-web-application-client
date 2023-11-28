@@ -1,14 +1,37 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
+// import useAxios from "../../Hooks/Axios/useAxios";
+// import { useQuery } from "@tanstack/react-query";
+// import useSecureAxios from "../../Hooks/Axios/useSecureAxios";
+// import axios from "axios";
+// import { useContext, useEffect } from "react";
+// import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useAdmin from "../../Hooks/Admin/useAdmin";
 
 
-const Dashboard = ({children}) => {
+
+
+const Dashboard = () => {
+
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:5000/api/v1/users?email=akd@gmail.com')
+    //         .then(res => {
+    //             // console.log(res.data.message);
+    //         })
+    // }, [])
+
+    const admin = useAdmin()
+    console.log(admin);
+    
+
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content grid gap-4 w-full">
                 <label htmlFor="my-drawer-2" className="drawer-button lg:hidden"><FaBars fontSize={40} /></label>
-                <Outlet/>
+                <Outlet />
 
             </div>
             <div className="drawer-side">

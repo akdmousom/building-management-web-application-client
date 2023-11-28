@@ -9,6 +9,7 @@ export const AuthContext = createContext('null');
 const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState();
+    const [userEmail, setuserEmail] = useState();
     const [loading, setLoading] = useState(true);
     const Axios = useAxios();
 
@@ -17,6 +18,8 @@ const AuthProvider = ({children}) => {
 
             setUser(currentUser)
             if (currentUser) {
+                
+                setuserEmail(currentUser.email)
                 const userEmail = {email: currentUser.email}
                 Axios.post('/jwt', userEmail)
                 .then(res => {
@@ -30,7 +33,9 @@ const AuthProvider = ({children}) => {
             }else{
                 localStorage.removeItem('accessToken')
             }
+
             setLoading(false)
+            
 
         })
 
@@ -72,7 +77,8 @@ const AuthProvider = ({children}) => {
         createUser,
         signIn,
         updateUserInfo,
-        logOut
+        logOut,
+        userEmail
 
     }
 

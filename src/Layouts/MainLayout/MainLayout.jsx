@@ -27,7 +27,7 @@ const MainLayout = ({ children }) => {
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'apartment'}>Apartments</NavLink></li>
         { loading ? "Loading" :
-            !user ? <li><NavLink to={'/login'}><IoIosLogIn size={25} ></IoIosLogIn></NavLink></li> : <div className="dropdown dropdown-end">
+            !user ? <li><NavLink to={'/login'}><IoIosLogIn size={25} ></IoIosLogIn></NavLink></li> : <div className="dropdown dropdown-end z-10">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
                         <img alt="Tailwind CSS Navbar component" src= {user.photoURL} />

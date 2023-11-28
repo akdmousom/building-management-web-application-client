@@ -36,11 +36,11 @@ const Router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard/>,
+        element: <PrivetRouter><Dashboard/></PrivetRouter>,
         children: [
             {
                 index: true,
-                element: <DashBoardHome/>
+                element: <PrivetRouter><DashBoardHome/></PrivetRouter>
             },
             {
                 path: 'profile',

@@ -13,7 +13,7 @@ const PrivetRouter = ({children}) => {
         return <div className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
 
-    if (!user.email) {
+    if (!user?.email) {
 
         navigate('/login')
         return
