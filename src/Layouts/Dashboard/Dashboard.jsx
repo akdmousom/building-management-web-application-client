@@ -22,8 +22,8 @@ const Dashboard = () => {
     // }, [])
 
     const admin = useAdmin()
+
     console.log(admin);
-    
 
 
     return (
@@ -40,6 +40,19 @@ const Dashboard = () => {
                     {/* Sidebar content here */}
                     <li><Link to={'/dashboard/profile'}>Profile</Link></li>
                     <li><Link to={'/dashboard/announcements'}>Announcements</Link></li>
+                    <li><Link to={'/dashboard/announcements'}>Make payment</Link></li>
+                    <li><Link to={'/dashboard/announcements'}> Payment History</Link></li>
+                    <li><Link to={'/dashboard/announcements'}> Announcements</Link></li>
+
+                  
+                    
+                    <div className=" divider  grid">
+                    <li><Link to={'/dashboard/announcements'}> Manage Members</Link></li>
+                    <li><Link to={'/dashboard/announcements'}>  Make Announcement</Link></li>
+                    <li><Link to={'/dashboard/announcements'}>   Agreement Requests</Link></li>
+                    <li><Link to={'/dashboard/announcements'}>   Manage Coupons</Link></li>
+                    
+                    </div>
                 </ul>
 
             </div>
