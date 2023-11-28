@@ -1,27 +1,24 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
 
 
-const Dashboard = () => {
+const Dashboard = ({children}) => {
     return (
-        <div className="flex">
-            {/* dashboard side bar */}
-            <div className="w-64 min-h-screen bg-primary text-white font-semibold">
-            <ul className="menu p-4">
-                    {
-                       <>
-                       <div className="grid divider">
-                        <li><NavLink to={'/dashboard/profile'}>Profile</NavLink></li>
-                        <li><NavLink to={'/dashboard/announcements'}>Announcements</NavLink></li>
-                        </div>
-                       </>
-                    }
-                   
-                    
-                </ul>
+        <div className="drawer lg:drawer-open">
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content grid gap-4 w-full">
+                <label htmlFor="my-drawer-2" className="drawer-button lg:hidden"><FaBars fontSize={40} /></label>
+                <Outlet/>
+
             </div>
-            {/* dashboard content */}
-            <div className="flex-1 p-8">
-                <Outlet></Outlet>
+            <div className="drawer-side">
+                <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
+                <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                    {/* Sidebar content here */}
+                    <li><Link to={'/dashboard/profile'}>Profile</Link></li>
+                    <li><Link to={'/dashboard/announcements'}>Announcements</Link></li>
+                </ul>
+
             </div>
         </div>
     );

@@ -7,6 +7,8 @@ import Register from "../Pages/Register/Register";
 import Dashboard from "../Layouts/Dashboard/Dashboard";
 import Profile from "../Pages/Profile/Profile";
 import PrivetRouter from "./PrivetRouter/PrivetRouter";
+import Announcements from "../Pages/Announcements/Announcements";
+import DashBoardHome from "../Pages/DashboardHome/DashBoardHome";
 
 const Router = createBrowserRouter([
     {
@@ -37,8 +39,16 @@ const Router = createBrowserRouter([
         element: <Dashboard/>,
         children: [
             {
+                index: true,
+                element: <DashBoardHome/>
+            },
+            {
                 path: 'profile',
                 element: <PrivetRouter><Profile/></PrivetRouter>
+            },
+            {
+                path: 'announcements',
+                element: <PrivetRouter><Announcements/></PrivetRouter>
             }
         ]
     }
