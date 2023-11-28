@@ -22,7 +22,8 @@ const ApartmentCard = ({ data, handleAgreement }) => {
 };
 
 ApartmentCard.propTypes = {
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
+    handleAgreement: PropTypes.func.isRequired
 }
 
 export default ApartmentCard;

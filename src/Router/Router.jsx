@@ -4,6 +4,9 @@ import Home from "../Pages/Home/Home";
 import Apartment from "../Pages/Apartment/Apartment";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import Dashboard from "../Layouts/Dashboard/Dashboard";
+import Profile from "../Pages/Profile/Profile";
+import PrivetRouter from "./PrivetRouter/PrivetRouter";
 
 const Router = createBrowserRouter([
     {
@@ -28,7 +31,18 @@ const Router = createBrowserRouter([
     {
         path: '/register', 
         element: <Register/>
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard/>,
+        children: [
+            {
+                path: 'profile',
+                element: <PrivetRouter><Profile/></PrivetRouter>
+            }
+        ]
     }
+
 ])
 
 export default Router;
