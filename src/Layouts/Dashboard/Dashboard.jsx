@@ -7,7 +7,6 @@ import { FaBars } from "react-icons/fa";
 // import { useContext, useEffect } from "react";
 // import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useAdmin from "../../Hooks/Admin/useAdmin";
-import useMember from "../../Hooks/Member/useMember";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -24,14 +23,22 @@ const Dashboard = () => {
     //         })
     // }, [])
 
-    const { user } = useContext(AuthContext)
 
-    const admin = useAdmin()
-    console.log(admin);
-    // const member = useMember()
-    // console.log(member);
 
-    // console.log(admin);
+    const isadmin = useAdmin()
+    const {isLoading} = isadmin
+    if (isLoading) {
+
+        return <><h1>Hello</h1></>
+        
+    }
+    const userRole = isadmin?.data?.data?.message;
+
+   
+   
+    
+
+
 
 
     return (
@@ -46,20 +53,25 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
-                    <li><Link to={'/dashboard/profile'}>Profile</Link></li>
-                    <li><Link to={'/dashboard/announcements'}>Announcements</Link></li>
 
-                    <li><Link to={'/dashboard/announcements'}>Make payment</Link></li>
-                    <li><Link to={'/dashboard/announcements'}> Payment History</Link></li>
-                    <li><Link to={'/dashboard/announcements'}> Announcements</Link></li>
+                    {userRole === 'user' ? <><li><Link to={'/dashboard/profile'}>Profile</Link></li>
+                        <li><Link to={'/dashboard/announcements'}>Announcements</Link></li></> : userRole === 'member' ? <>
+                            <li><Link to={'/dashboard/profile'}>Profile</Link></li>
+                            <li><Link to={'/dashboard/announcements'}>Announcements</Link></li>
 
-                    {
-                        admin === 'admin' ? <div className=" divider  grid">
-                            <li><Link to={'/dashboard/announcements'}> Manage Members</Link></li>
-                            <li><Link to={'/dashboard/announcements'}>  Make Announcement</Link></li>
-                            <li><Link to={'/dashboard/announcements'}>   Agreement Requests</Link></li>
-                            <li><Link to={'/dashboard/announcements'}>   Manage Coupons</Link></li></div> : <></>
-                    }
+                            <li><Link to={'/dashboard/announcements'}>Make payment</Link></li>
+                            <li><Link to={'/dashboard/announcements'}> Payment History</Link></li>
+                            <li><Link to={'/dashboard/announcements'}> Announcements</Link></li>
+                        </> : userRole === 'admin' ? <div className=" divider  grid">
+                        <li><Link to={'/dashboard/manage-member'}> Manage Members</Link></li>
+                        <li><Link to={'/dashboard/announcements'}>  Make Announcement</Link></li>
+                        <li><Link to={'/dashboard/announcements'}>   Agreement Requests</Link></li>
+                        <li><Link to={'/dashboard/announcements'}>   Manage Coupons</Link></li></div> : <></> }
+
+
+
+                    
+
 
 
 

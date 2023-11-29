@@ -26,13 +26,13 @@ const useAdmin = () => {
 
 
 
-    const {data} = useQuery({
+    const {data, isLoading} = useQuery({
         queryKey: ['userRole'],
         enabled: !loading && !!user?.email,
         queryFn: isAdmin
     })
 
-    return data?.data?.message
+    return {data, isLoading }
 
 
 

@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import useSecureAxios from "../Axios/useSecureAxios";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import useAxios from "../Axios/useAxios";
 
 const useMember = () => {
-    const AxiosSecure = useSecureAxios()
+    const AxiosSecure = useAxios()
     const {user} = useContext(AuthContext)
-    console.log(user.email);
+
     
     const isMember = async ()=>{
 
@@ -17,18 +17,18 @@ const useMember = () => {
 
     }
 
-    const {data} = useQuery({
+    const {data, isLoading} = useQuery({
         queryKey: ['isMember'],
         queryFn: isMember
     })
 
-    console.log(data);
+   
     
     
     
     
     
-    return data
+    return {data, isLoading           }
 };
 
 export default useMember;

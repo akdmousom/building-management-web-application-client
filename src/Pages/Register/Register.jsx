@@ -35,7 +35,7 @@ const Register =() => {
                             }
 
                             const res =Axios.post('/register', userData)
-                            console.log(res);
+                          
 
                             
 

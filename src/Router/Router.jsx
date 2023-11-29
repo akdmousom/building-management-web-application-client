@@ -9,6 +9,8 @@ import Profile from "../Pages/Profile/Profile";
 import PrivetRouter from "./PrivetRouter/PrivetRouter";
 import Announcements from "../Pages/Announcements/Announcements";
 import DashBoardHome from "../Pages/DashboardHome/DashBoardHome";
+import ManageMember from "../Pages/DashBoard/ManageMember/ManageMember";
+import AdminRouter from "./AdminRouter";
 
 const Router = createBrowserRouter([
     {
@@ -49,6 +51,10 @@ const Router = createBrowserRouter([
             {
                 path: 'announcements',
                 element: <PrivetRouter><Announcements/></PrivetRouter>
+            },
+            {
+                path: 'manage-member',
+                element: <AdminRouter><ManageMember/></AdminRouter>
             }
         ]
     }
