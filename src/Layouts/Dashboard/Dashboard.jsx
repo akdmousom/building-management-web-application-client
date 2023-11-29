@@ -58,14 +58,12 @@ const Dashboard = () => {
                         <li><Link to={'/dashboard/announcements'}>Announcements</Link></li></> : userRole === 'member' ? <>
                             <li><Link to={'/dashboard/profile'}>Profile</Link></li>
                             <li><Link to={'/dashboard/announcements'}>Announcements</Link></li>
-
                             <li><Link to={'/dashboard/announcements'}>Make payment</Link></li>
                             <li><Link to={'/dashboard/announcements'}> Payment History</Link></li>
-                            <li><Link to={'/dashboard/announcements'}> Announcements</Link></li>
                         </> : userRole === 'admin' ? <div className=" divider  grid">
                         <li><Link to={'/dashboard/manage-member'}> Manage Members</Link></li>
                         <li><Link to={'/dashboard/make-announcements'}>  Make Announcement</Link></li>
-                        <li><Link to={'/dashboard/announcements'}>   Agreement Requests</Link></li>
+                        <li><Link to={'/dashboard/agreement-request'}>   Agreement Requests</Link></li>
                         <li><Link to={'/dashboard/announcements'}>   Manage Coupons</Link></li></div> : <></> }
 
 
