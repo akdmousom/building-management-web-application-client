@@ -1,23 +1,21 @@
 
 import { useForm } from "react-hook-form"
 import useSecureAxios from "../../../Hooks/Axios/useSecureAxios";
-import { useContext } from "react";
 import useAuth from "../../../Hooks/UseAuth/UseAuth";
 const MakeAnnouncements = () => {
     const {
         register,
         handleSubmit,
-        watch,
-        resetField,
+ 
+   
         reset,
-        formState: { errors },
+      
       } = useForm()
       const {user} = useAuth()
-      console.log(user.email);
 
       const Axios = useSecureAxios()
 
-      const onSubmit = async (data, e) => {
+      const onSubmit = async (data) => {
         const title = data.title;
         const announcement = data.announcement;
 
