@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import useAdmin from "../Hooks/Admin/useAdmin";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import PropTypes from 'prop-types'
 
 
 const AdminRouter = ({children}) => {
     const userRole = useAdmin()
-    const {isLoading, data} = userRole
-    const {loading,logOut} = useContext(AuthContext)
+    const {isLoading,} = userRole
+    const {logOut} = useContext(AuthContext)
 
     if (isLoading) {
 
@@ -27,5 +28,8 @@ const AdminRouter = ({children}) => {
 
     return children
 };
+AdminRouter.propTypes = {
+    children : PropTypes.node.isRequired
+}
 
 export default AdminRouter;

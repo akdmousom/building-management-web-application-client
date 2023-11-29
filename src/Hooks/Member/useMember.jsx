@@ -17,7 +17,7 @@ const useMember = () => {
 
     }
 
-    const {data, isLoading} = useQuery({
+    const {data, isLoading, refetch} = useQuery({
         queryKey: ['isMember'],
         queryFn: isMember
     })
@@ -28,7 +28,7 @@ const useMember = () => {
     
     
     
-    return {data, isLoading           }
+    return {data, isLoading,refetch}
 };
 
 export default useMember;

@@ -34,7 +34,7 @@ const Register =() => {
                                 userEmail: user.email
                             }
 
-                            const res =Axios.post('/register', userData)
+                            Axios.post('/register', userData)
                           
 
                             
