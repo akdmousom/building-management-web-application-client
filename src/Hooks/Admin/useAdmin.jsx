@@ -2,13 +2,14 @@ import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import useSecureAxios from '../Axios/useSecureAxios';
+import useAxios from '../Axios/useAxios';
 
 const useAdmin = () => {
    
 
     const {user, loading} = useContext(AuthContext)
     const email = user?.email
-    const AxiosSecure = useSecureAxios()
+    const AxiosSecure = useAxios()
 
   
     

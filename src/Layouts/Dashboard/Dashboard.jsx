@@ -7,6 +7,9 @@ import { FaBars } from "react-icons/fa";
 // import { useContext, useEffect } from "react";
 // import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useAdmin from "../../Hooks/Admin/useAdmin";
+import useMember from "../../Hooks/Member/useMember";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 
@@ -21,9 +24,14 @@ const Dashboard = () => {
     //         })
     // }, [])
 
-    const admin = useAdmin()
+    const { user } = useContext(AuthContext)
 
+    const admin = useAdmin()
     console.log(admin);
+    // const member = useMember()
+    // console.log(member);
+
+    // console.log(admin);
 
 
     return (
@@ -40,19 +48,22 @@ const Dashboard = () => {
                     {/* Sidebar content here */}
                     <li><Link to={'/dashboard/profile'}>Profile</Link></li>
                     <li><Link to={'/dashboard/announcements'}>Announcements</Link></li>
+
                     <li><Link to={'/dashboard/announcements'}>Make payment</Link></li>
                     <li><Link to={'/dashboard/announcements'}> Payment History</Link></li>
                     <li><Link to={'/dashboard/announcements'}> Announcements</Link></li>
 
-                  
-                    
-                    <div className=" divider  grid">
-                    <li><Link to={'/dashboard/announcements'}> Manage Members</Link></li>
-                    <li><Link to={'/dashboard/announcements'}>  Make Announcement</Link></li>
-                    <li><Link to={'/dashboard/announcements'}>   Agreement Requests</Link></li>
-                    <li><Link to={'/dashboard/announcements'}>   Manage Coupons</Link></li>
-                    
-                    </div>
+                    {
+                        admin === 'admin' ? <div className=" divider  grid">
+                            <li><Link to={'/dashboard/announcements'}> Manage Members</Link></li>
+                            <li><Link to={'/dashboard/announcements'}>  Make Announcement</Link></li>
+                            <li><Link to={'/dashboard/announcements'}>   Agreement Requests</Link></li>
+                            <li><Link to={'/dashboard/announcements'}>   Manage Coupons</Link></li></div> : <></>
+                    }
+
+
+
+
                 </ul>
 
             </div>
