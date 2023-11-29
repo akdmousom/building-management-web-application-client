@@ -11,6 +11,7 @@ import Announcements from "../Pages/Announcements/Announcements";
 import DashBoardHome from "../Pages/DashboardHome/DashBoardHome";
 import ManageMember from "../Pages/DashBoard/ManageMember/ManageMember";
 import AdminRouter from "./AdminRouter";
+import MakeAnnouncements from "../Pages/DashBoard/MakeAnnouncements/MakeAnnouncements";
 
 const Router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const Router = createBrowserRouter([
             {
                 path: 'manage-member',
                 element: <AdminRouter><ManageMember/></AdminRouter>
+            },
+            {
+                path: 'make-announcements',
+                element: <AdminRouter><MakeAnnouncements/></AdminRouter>
             }
         ]
     }
