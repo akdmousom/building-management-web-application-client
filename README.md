@@ -1,8 +1,18 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Building management syste,
 
-Currently, two official plugins are available:
+## Live Link
+https://building-management-syst-40685.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+### Main Feature in this website is
+
+- You can login with Email & Password.
+
+- You can create register accout with Email & Password.
+
+- You can rent house.
+
+- You can pay any with card.
+
+- In this application i use jwt for token verify.

@@ -67,12 +67,12 @@ const AgreementRequest = () => {
                             {data.status}
                             <div className="badge badge-secondary">{data.date.slice(0, 10)}</div>
                         </h2>
-                        <p>{data.userName}</p>
-                        <p>{data.userEmail}</p>
-                        <p>{data.floorNo}</p>
-                        <p>{data.blockName}</p>
-                        <p>{data.apartmentNo}</p>
-                        <p>{data.rent}</p>
+                        <p>Name: {data.userName}</p>
+                        <p>Email: {data.userEmail}</p>
+                        <p>Floor: {data.floorNo}</p>
+                        <p>Block: {data.blockName}</p>
+                        <p>Apartment: {data.apartmentNo}</p>
+                        <p>Date: {data.rent}</p>
                         <div className="card-actions justify-end">
                         <button onClick={()=>handleAccept(data._id, data.userEmail)} className="btn  btn-outline btn-primary">Accept</button>
                         <button onClick={()=>handleReject(data._id)} className="btn btn-outline btn-error">Reject</button>

@@ -4,12 +4,15 @@ import useAuth from "../../Hooks/UseAuth/UseAuth";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState()
+  const navigate = useNavigate();
 
   const Axios = useSecureAxios()
   const user = useAuth()
@@ -36,7 +39,7 @@ const CheckoutForm = () => {
 
 
   useEffect(() => {
-    Axios.post('http://localhost:5000/api/v1/create-payment-intent', datas)
+    Axios.post('https://building-management-server-three.vercel.app/api/v1/create-payment-intent', datas)
       .then(res => {
         // console.log(res.data.clientSecret);
         const clientSecrets = res?.data?.clientSecret
@@ -107,10 +110,8 @@ const CheckoutForm = () => {
 
       if (paymentIntent.status === 'succeeded') {
 
-        const rentDone = {
-          email : userEmail,
-
-        }
+        toast.success('Payment successful')
+        navigate('/dashboard/payment-history')
         
       }
 
@@ -120,7 +121,8 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+   <div className=" mt-12 my-auto ">
+     <form  onSubmit={handleSubmit}>
       <CardElement
         options={{
           style: {
@@ -137,10 +139,11 @@ const CheckoutForm = () => {
           },
         }}
       />
-      <button type="submit" disabled={!stripe || !clientSecret}>
+      <button className="btn text-center mt-8 btn-primary" type="submit" disabled={!stripe || !clientSecret}>
         Pay
       </button>
     </form>
+   </div>
   );
 };
 

@@ -116,7 +116,7 @@ const Apartment = () => {
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 my-10 px-4">
 
                             {
-                                data?.data?.cursor.map((data, idx) => <ApartmentCard handleAgreement={handleAgreement} data={data} key={idx} />)
+                                data?.data?.cursor?.map((data, idx) => <ApartmentCard handleAgreement={handleAgreement} data={data} key={idx} />)
                             }
 
 

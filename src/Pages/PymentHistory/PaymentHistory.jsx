@@ -67,7 +67,7 @@ const PaymentHistory = () => {
                                 <td>{data.apartmentNo}</td>
                                 <td>{data.blockName}</td>
                                 <td>{data.month}</td>
-                                <td>{data.rent}</td>
+                                <td>$ {data.rent}</td>
                             </tr>)
                         }
 
