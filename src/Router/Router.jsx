@@ -13,6 +13,9 @@ import ManageMember from "../Pages/DashBoard/ManageMember/ManageMember";
 import AdminRouter from "./AdminRouter";
 import MakeAnnouncements from "../Pages/DashBoard/MakeAnnouncements/MakeAnnouncements";
 import AgreementRequest from "../Pages/DashBoard/AgreementRequest/AgreementRequest";
+import MakePayment from "../Pages/MakePayment/MakePayment";
+import Payment from "../Pages/Payment/Payment";
+import PaymentHistory from "../Pages/PymentHistory/PaymentHistory";
 
 const Router = createBrowserRouter([
     {
@@ -65,6 +68,17 @@ const Router = createBrowserRouter([
             {
                 path: 'agreement-request',
                 element: <AdminRouter><AgreementRequest/></AdminRouter>
+            },
+            {
+                path: 'make-payment',
+                element: <PrivetRouter><MakePayment/></PrivetRouter>
+            },
+            {
+                path: 'payment',
+                element: <PrivetRouter><Payment/></PrivetRouter>
+            },{
+                path: 'payment-history',
+                element: <PrivetRouter><PaymentHistory/></PrivetRouter>
             }
         ]
     }

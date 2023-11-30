@@ -10,7 +10,7 @@ const AgreementRequest = () => {
     const Axios = useSecureAxios()
     const AxiosPublic = useAxios()
     const user = useAuth()
-    console.log(user.userEmail);
+
 
     const getAgreementRequest = async () => {
         const res = await Axios.get(`/get-agreement?email=${user.userEmail}`)
@@ -58,7 +58,6 @@ const AgreementRequest = () => {
     }
 
 
-    console.log(data.data);
     return (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {

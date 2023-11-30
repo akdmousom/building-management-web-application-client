@@ -54,13 +54,20 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                     {/* Sidebar content here */}
 
-                    {userRole === 'user' ? <><li><Link to={'/dashboard/profile'}>Profile</Link></li>
-                        <li><Link to={'/dashboard/announcements'}>Announcements</Link></li></> : userRole === 'member' ? <>
+                    {userRole === 'user' ? <>
+                    
+                    <li><Link to={'/'}>Home</Link></li>
+                    <li><Link to={'/dashboard/profile'}>Profile</Link></li>
+                        <li><Link to={'/dashboard/announcements'}>Announcements</Link></li></> 
+                        
+                        : userRole === 'member' ? <>
+                        <li><Link to={'/'}>Home</Link></li>
                             <li><Link to={'/dashboard/profile'}>Profile</Link></li>
                             <li><Link to={'/dashboard/announcements'}>Announcements</Link></li>
-                            <li><Link to={'/dashboard/announcements'}>Make payment</Link></li>
-                            <li><Link to={'/dashboard/announcements'}> Payment History</Link></li>
+                            <li><Link to={'/dashboard/make-payment'}>Make payment</Link></li>
+                            <li><Link to={'/dashboard/payment-history'}> Payment History</Link></li>
                         </> : userRole === 'admin' ? <div className=" divider  grid">
+                        <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/dashboard/manage-member'}> Manage Members</Link></li>
                         <li><Link to={'/dashboard/make-announcements'}>  Make Announcement</Link></li>
                         <li><Link to={'/dashboard/agreement-request'}>   Agreement Requests</Link></li>
