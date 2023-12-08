@@ -17,7 +17,7 @@ const CheckoutForm = () => {
   const Axios = useSecureAxios()
   const user = useAuth()
   const { userEmail } = user
-  console.log(user?.user.displayName);
+
 
 
   const getRentData = async () => {
@@ -29,17 +29,17 @@ const CheckoutForm = () => {
     queryFn: getRentData
   })
 
-  console.log(data);
+
   const datas = {
     rent: data?.data[0].rent
   }
 
-  console.log(data?.data[0]);
+
 
 
 
   useEffect(() => {
-    Axios.post('https://building-management-server-three.vercel.app/api/v1/create-payment-intent', datas)
+    Axios.post(`/create-payment-intent?email=${user.userEmail}`, datas)
       .then(res => {
         // console.log(res.data.clientSecret);
         const clientSecrets = res?.data?.clientSecret
@@ -102,7 +102,7 @@ const CheckoutForm = () => {
 
     if (confirmError) {
 
-      console.log(confirmError);
+      toast.error(confirmError)
 
     }
 
@@ -139,7 +139,7 @@ const CheckoutForm = () => {
           },
         }}
       />
-      <button className="btn text-center mt-8 btn-primary" type="submit" disabled={!stripe || !clientSecret}>
+      <button className="btn text-center mt-8 btn-primary" type="submit" disabled={!clientSecret}>
         Pay
       </button>
     </form>

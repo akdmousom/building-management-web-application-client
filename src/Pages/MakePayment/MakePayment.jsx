@@ -21,12 +21,12 @@ const MakePayment = () => {
     const navigate = useNavigate()
    
     const emails = useAuth()
-    console.log(emails.userEmail);
+
 
     const Axios = useSecureAxios()
 
     const getAgreement = async() =>{
-        const res = await Axios.get(`/agreement-accept?email=${emails.userEmail}`)
+        const res = await Axios.get(`/agreement-accept?email=${emails?.userEmail}`)
         return res
     }
 
@@ -37,7 +37,7 @@ const MakePayment = () => {
     })
 
     if (isLoading) {
-        return <>hi</>
+        return <div className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
 
    
@@ -49,7 +49,7 @@ const MakePayment = () => {
 
 
 
-        console.log(data.month, rent);
+
 
         data = {
             userEmail,

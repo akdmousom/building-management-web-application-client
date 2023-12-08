@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useSecureAxios from '../../Hooks/Axios/useSecureAxios';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../Hooks/UseAuth/UseAuth';
@@ -15,7 +15,7 @@ const PaymentHistory = () => {
         const res = await Axios.get(`/get-pay-rent?email=${user.userEmail}`)
         return res;
     }
-    const { data, isLoading } = useQuery({
+    const { data } = useQuery({
         queryKey: ['getRentData'],
         queryFn: getRentData
     })
@@ -28,7 +28,7 @@ const PaymentHistory = () => {
         setRentDatas(dataRent)
     },[dataRent])
 
-    console.log(dataRent);
+
 
     const onSubmit = (data) => {
 
@@ -45,7 +45,7 @@ const PaymentHistory = () => {
             <div className="overflow-x-auto">
                 <div className='flex justify-center h-11 my-4'>
                     <form className='flex items-center gap-4' onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register('text')} type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <input {...register('text')} type="text" placeholder="january" className="input input-bordered w-full max-w-xs" />
                         <input className='btn  btn-primary' type="submit" value="Search" />
                     </form>
                 </div>

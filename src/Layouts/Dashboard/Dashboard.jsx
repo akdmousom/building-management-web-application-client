@@ -29,10 +29,13 @@ const Dashboard = () => {
     const {isLoading} = isadmin
     if (isLoading) {
 
-        return <><h1>Hello</h1></>
+        return <div className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
         
     }
     const userRole = isadmin?.data?.data?.message;
+
+    console.log(userRole);
+   
 
    
    
@@ -71,7 +74,7 @@ const Dashboard = () => {
                         <li><Link to={'/dashboard/manage-member'}> Manage Members</Link></li>
                         <li><Link to={'/dashboard/make-announcements'}>  Make Announcement</Link></li>
                         <li><Link to={'/dashboard/agreement-request'}>   Agreement Requests</Link></li>
-                        <li><Link to={'/dashboard/announcements'}>   Manage Coupons</Link></li></div> : <></> }
+                        <li><Link to={'/dashboard/coupon-code'}>   Manage Coupons</Link></li></div> : <></> }
 
 
 

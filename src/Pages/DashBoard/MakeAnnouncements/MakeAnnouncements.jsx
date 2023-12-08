@@ -28,7 +28,7 @@ const MakeAnnouncements = () => {
 
         const res = await Axios.post(`/post-announcement?email=${user.email}`, datas)
 
-        console.log(res);
+
 
 
         

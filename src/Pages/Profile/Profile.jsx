@@ -11,7 +11,7 @@ const Profile = () => {
     const { email, displayName, photoURL, loading } = user;
    
     const emails = useAuth()
-    console.log(emails.userEmail);
+
 
     const Axios = useSecureAxios()
 
@@ -36,17 +36,17 @@ const Profile = () => {
     
     if (isLoading) {
 
-        return <><h1>Hello</h1></>
+        return <div className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
 
     }
     const userRole = isadmin?.data?.data?.message;
-    console.log(userRole);
+
 
   
 
     
 
-    console.log(data?.data[0]);
+
 
 
     return (

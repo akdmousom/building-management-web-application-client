@@ -16,6 +16,7 @@ import AgreementRequest from "../Pages/DashBoard/AgreementRequest/AgreementReque
 import MakePayment from "../Pages/MakePayment/MakePayment";
 import Payment from "../Pages/Payment/Payment";
 import PaymentHistory from "../Pages/PymentHistory/PaymentHistory";
+import CouponCode from "../Pages/CouponCode/CouponCode";
 
 const Router = createBrowserRouter([
     {
@@ -79,6 +80,9 @@ const Router = createBrowserRouter([
             },{
                 path: 'payment-history',
                 element: <PrivetRouter><PaymentHistory/></PrivetRouter>
+            },{
+                path: 'coupon-code',
+                element: <AdminRouter><CouponCode/></AdminRouter>
             }
         ]
     }

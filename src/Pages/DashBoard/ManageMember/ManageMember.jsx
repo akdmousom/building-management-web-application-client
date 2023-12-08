@@ -8,8 +8,8 @@ const ManageMember = () => {
     const {data, refetch} = member;
     const Axios = useAxios()
 
-    const removeMember = async (id) =>{
-        const res = await Axios.put(`/remove-member/${id}`)
+    const removeMember = async (email) =>{
+        const res = await Axios.put(`/remove-member?email=${email}`)
         if (res.status === 200) {
 
             toast.success('Member remove successfully')
@@ -21,6 +21,7 @@ const ManageMember = () => {
         
         
     }
+
 
 
     return (
@@ -42,7 +43,7 @@ const ManageMember = () => {
                   <th>{idx+1}</th>
                   <td>{user.userName}</td>
                   <td>{user.userEmail}</td>
-                  <td><button onClick={()=>removeMember(user._id)} className="btn btn-outline btn-sm">Remove</button></td>
+                  <td><button onClick={()=>removeMember(user.userEmail)} className="btn btn-outline btn-sm">Remove</button></td>
                 </tr>)
                   }
 

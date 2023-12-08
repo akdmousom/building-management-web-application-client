@@ -20,11 +20,11 @@ const Announcements = () => {
         queryFn: getAnnouncement,
     })
 
-    console.log(data?.data);
+
 
     if (isLoading) {
 
-        return <>Load</>
+        return <div className="min-h-screen flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
         
     }
 
