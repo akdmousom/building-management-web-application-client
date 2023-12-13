@@ -4,6 +4,7 @@ import Container from "../../Components/Container/Container";
 import Maps from "../../Components/Maps/Maps";
 import Cupon from "../../Components/Cupon/Cupon";
 import './Home.css'
+import EarthLove from "../../Components/Earth/EarthLove";
 
 const Home = () => {
     return (
@@ -17,6 +18,12 @@ const Home = () => {
                 <div className="my-8 w-[350px] mx-auto md:w-[700px] md:mx-auto lg:w-full object-cover">
                     <h1 className="md:text-4xl text-2xl font-medium lg:font-extrabold text-center py-4">Take A Look At Our Apartments</h1>
                     <HomeSwiper />
+                </div>
+                <div className=" max-w-[1200px] mx-auto">
+                    <EarthLove/>
+                    <h3 className="text-2xl text-center my-5">
+                    Save the climate for future generation
+                    </h3>
                 </div>
                 <div className="px-2"><Cupon /></div>
                 <div >
